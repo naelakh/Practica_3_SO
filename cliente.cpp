@@ -5,11 +5,31 @@
 #include <unistd.h>
 #include <fstream>
 
+using namespace std;
+
+int crearSocket() {
+}
+
+
+void configurarServidor() {
+}
+
+void recibirDatos() {
+}
+
+void guardarArchivo() {
+
+}
+
+void imprimirDatos() { 
+
+}
+
 int main() {
     // Crear un socket TCP/IP
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
-        std::cerr << "Error al crear el socket" << std::endl;
+        cerr << "Error al crear el socket" << endl;
         return 1;
     }
 
@@ -19,12 +39,12 @@ int main() {
     servaddr.sin_port = htons(12345);
 
     if (inet_pton(AF_INET, "192.168.0.148", &servaddr.sin_addr) <= 0) {
-        std::cerr << "Direccion invalida o no soportada" << std::endl;
+        std::cerr << "Direccion invalida o no soportada" << endl;
         return 1;
     }
 
     if (connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) == -1) {
-        std::cerr << "Error al conectar" << std::endl;
+        cerr << "Error al conectar" << endl;
         return 1;
     }
 
@@ -40,9 +60,9 @@ int main() {
     // Implementar
 
     // Imprimir los numeros de punto flotante
-    std::cout << "Numeros de punto flotante recibidos: " << std::endl;
+    cout << "Numeros de punto flotante recibidos: " << endl;
     for (float f : floats) {
-        std::cout << f << std::endl;
+        cout << f << std::endl;
     }
 
     // Cerrar el socket
