@@ -7,18 +7,14 @@
 
 using namespace std;
 
+// Crear un socket TCP/IP
 int crearSocket() {
-
-    
- // Crear un socket TCP/IP
-      int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
         cerr << "Error al crear el socket" << endl;
-        return 1;
+        exit(1);
     }
-
-
-    
+    return sockfd
 }
 
 
