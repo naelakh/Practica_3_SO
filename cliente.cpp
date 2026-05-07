@@ -17,37 +17,29 @@ int crearSocket() {
     return sockfd
 }
 
-
-void configurarServidor() {
-}
-
-void conectarServidor() {
-
-
- // Conectar el socket al servidor
-    struct sockaddr_in servaddr;
+//cnfigurar servidor
+void configurarServidor(struct sockaddr_in &servaddr) {
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htons(12345);
 
-    if (inet_pton(AF_INET, "192.168.0.148", &servaddr.sin_addr) <= 0) {
-        std::cerr << "Direccion invalida o no soportada" << endl;
-        return 1;
+    if (inet_pton(AF_INET, "127.0.0.1", &servaddr.sin_addr) <= 0) {
+        cerr << "Direccion invalida o no soportada" << endl;
+        exit(1);
     }
-
-    if (connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) == -1) {
-        cerr << "Error al conectar" << endl;
-        return 1;
-    }
-
-
 }
 
+// Conectar el socket al servidor
+void conectarServidor() {
+    if (connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) == -1) {
+        cerr << "Error al conectar" << endl;
+        exit(1);
+    }
+    cout << "conexion establecida correctamente" << endl;
+}
+
+// Recibir los datos como bytes
 void recibirDatos() {
-
-
-     // Recibir los datos como bytes
-    vector<float> floats;
-    float buffer;
+   
 
     while (recv(sockfd, &buffer, sizeof(buffer), 0) > 0) {
         floats.push_back(buffer);
@@ -58,6 +50,7 @@ void recibirDatos() {
 }
 
 void guardarArchivo() {
+    ofstream file("datos.txt");
 
 
 
@@ -67,16 +60,15 @@ void guardarArchivo() {
 
 
 }
-
+// Imprimir los numeros
 void imprimirDatos() { 
 
-     // Imprimir los numeros de punto flotante
-    cout << "Numeros de punto flotante recibidos: " << endl;
-    for (float f : floats) {
-        cout << f << endl;
-    }
-
+      
+    cout << "Numeros recibidos: " << endl;
     
+    for (unsigned char c : data) {
+        cout << (int)c << endl;
+    }
 }
 
 int main() {
