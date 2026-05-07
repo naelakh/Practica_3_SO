@@ -8,32 +8,27 @@
 using namespace std;
 
 int crearSocket() {
+
+    
+ // Crear un socket TCP/IP
+      int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd == -1) {
+        cerr << "Error al crear el socket" << endl;
+        return 1;
+    }
+
+
+    
 }
 
 
 void configurarServidor() {
 }
 
-void recibirDatos() {
-}
+void conectarServidor() {
 
-void guardarArchivo() {
 
-}
-
-void imprimirDatos() { 
-
-}
-
-int main() {
-    // Crear un socket TCP/IP
-    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd == -1) {
-        cerr << "Error al crear el socket" << endl;
-        return 1;
-    }
-
-    // Conectar el socket al servidor
+ // Conectar el socket al servidor
     struct sockaddr_in servaddr;
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htons(12345);
@@ -48,7 +43,13 @@ int main() {
         return 1;
     }
 
-    // Recibir los datos como bytes
+
+}
+
+void recibirDatos() {
+
+
+     // Recibir los datos como bytes
     vector<float> floats;
     float buffer;
 
@@ -56,15 +57,41 @@ int main() {
         floats.push_back(buffer);
     }
 
-    // Guardar los datos en un archivo de texto
-    // Implementar
 
-    // Imprimir los numeros de punto flotante
+    
+}
+
+void guardarArchivo() {
+
+
+
+    
+
+
+
+
+}
+
+void imprimirDatos() { 
+
+     // Imprimir los numeros de punto flotante
     cout << "Numeros de punto flotante recibidos: " << endl;
     for (float f : floats) {
         cout << f << endl;
     }
 
+    
+}
+
+int main() {
+   
+  
+
+   
+
+
+
+   
     // Cerrar el socket
     close(sockfd);
 
