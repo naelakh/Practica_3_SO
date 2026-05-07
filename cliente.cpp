@@ -49,7 +49,7 @@ int main() {
     }
 
     // Recibir los datos como bytes
-    std::vector<float> floats;
+    vector<float> floats;
     float buffer;
 
     while (recv(sockfd, &buffer, sizeof(buffer), 0) > 0) {
@@ -62,7 +62,7 @@ int main() {
     // Imprimir los numeros de punto flotante
     cout << "Numeros de punto flotante recibidos: " << endl;
     for (float f : floats) {
-        cout << f << std::endl;
+        cout << f << endl;
     }
 
     // Cerrar el socket
