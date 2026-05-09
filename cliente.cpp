@@ -42,13 +42,13 @@ void recibirDatos(int sockfd, vector<unsigned char> &data) {
    int total = 0;
 
     while (total < 768) {
-        int byte = recv(sockfd, data.data() + total, 768 - total, 0);
+        int bytes = recv(sockfd, data.data() + total, 768 - total, 0);
 
-        if (byte <= 0) {
+        if (bytes <= 0) {
             cerr << "Error al recibir datos" << endl;
             break;
         }
-        total += byte;
+        total += bytes;
     }
     cout << "Bytes recibidos: " << total << endl;
 }
@@ -77,18 +77,21 @@ void imprimirDatos(const vector<unsigned char> & data) {
 
 int main() {
     int sockfd = crearSocket();
-    
+
     sockaddr_in servaddr;
-    configurarServidor(sockfd, servaddr);
-    
+
+    configurarServidor(servaddr);
+
+    conectarServidor(sockfd, servaddr);
+
     vector<unsigned char> data(768);
-    
+
     recibirDatos(sockfd, data);
-    
+
     guardarArchivo(data);
 
     imprimirDatos(data);
-   
+
     close(sockfd);
 
     return 0;
