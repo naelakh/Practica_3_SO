@@ -14,7 +14,7 @@ int crearSocket() {
         cerr << "Error al crear el socket" << endl;
         exit(1);
     }
-    return sockfd
+    return sockfd;
 }
 
 //cnfigurar servidor
@@ -29,7 +29,7 @@ void configurarServidor(struct sockaddr_in &servaddr) {
 }
 
 // Conectar el socket al servidor
-void conectarServidor(int sockfd, sockaddr_in &seraddr) {
+void conectarServidor(int sockfd, sockaddr_in &servaddr) {
     if (connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) == -1) {
         cerr << "Error al conectar" << endl;
         exit(1);
@@ -39,7 +39,7 @@ void conectarServidor(int sockfd, sockaddr_in &seraddr) {
 
 // Recibir los datos como bytes
 void recibirDatos(int sockfd, vector<unsigned char> &data) {
-   int total - 0;
+   int total = 0;
 
     while (total < 768) {
         int byte = recv(sockfd, data.data() + total, 768 - total, 0);
@@ -53,7 +53,7 @@ void recibirDatos(int sockfd, vector<unsigned char> &data) {
     cout << "Bytes recibidos: " << total << endl;
 }
 
-void guardarArchivo() {
+void guardarArchivo(const vector<unsigned char> &data) {
     ofstream file("datos.txt");
 
     if (!file) {
@@ -67,7 +67,7 @@ void guardarArchivo() {
     cout << "Archivo guardado correctamente" << endl;
 }
 // Imprimir los numeros
-void imprimirDatos() {  
+void imprimirDatos(const vector<unsigned char> & data) {  
     cout << "Numeros recibidos: " << endl;
     
     for (unsigned char c : data) {
