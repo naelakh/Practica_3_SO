@@ -79,7 +79,7 @@ int main() {
     int sockfd = crearSocket();
     
     sockaddr_in servaddr;
-    configurarServidor(servaddr);
+    configurarServidor(sockfd, servaddr);
     
     vector<unsigned char> data(768);
     
@@ -88,7 +88,7 @@ int main() {
     guardarArchivo(data);
 
     imprimirDatos(data);
-    // Cerrar el socket
+   
     close(sockfd);
 
     return 0;
