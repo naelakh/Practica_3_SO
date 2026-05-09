@@ -2,7 +2,7 @@ import socket
 import struct
 
 # Dirección IP y puerto del servidor
-HOST = 'Direccion-IP-del-PC'
+HOST = '127.0.0.1'
 PORT = 12345
 
 # Array de 768 elementos (puedes generarlos como desees)
