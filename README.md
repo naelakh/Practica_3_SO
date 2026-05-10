@@ -111,7 +111,7 @@ El programa en C++ realiza las siguientes operaciones:
 El script Bash se encarga de automatizar la ejecucion del programa:
 -	Lanza el servidor Python en segundo plano con `python3 ServidorCamara.py &`
 -	Espera 2 segundos con `sleep 2` para asegurarse de que el servidor esta listo
--	Compila el codigo C++ utilizando `g++ main.cpp cliente.cpp -o cliente`
+-	Compila el codigo C++ utilizando `g++ cliente.cpp -o cliente`
 -	Ejecuta el cliente con `./cliente`
 
 ---
