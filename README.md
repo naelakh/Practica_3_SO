@@ -65,11 +65,11 @@ Antes de ejecutar el programa es necesario ajustar la direccion IP.
 
 En **`ServidorCamara.py`** sustituir `'Direccion-IP-del-PC'` por la IP real de tu maquina:
 ```python
-HOST = '192.168.1.XX'
+HOST = '127.0.0.1'
 ```
 En **`cliente.cpp`** asegurarse de que la IP coincide con la del servidor:
 ```cpp
-if (inet_pton(AF_INET, "192.168.1.XX", &servaddr.sin_addr) <= 0)
+if (inet_pton(AF_INET, "127.0.0.1", &servaddr.sin_addr) <= 0)
 ```
 Si el servidor y el cliente se ejecutan en la misma maquina usar `127.0.0.1` en ambos archivos.
 
@@ -77,7 +77,7 @@ Si el servidor y el cliente se ejecutan en la misma maquina usar `127.0.0.1` en 
 ## 5. Compilación y ejecución :
 ### 5.1 Compilación:
 ```bash
-g++ main.cpp cliente.cpp -o cliente
+g++ cliente.cpp -o cliente
 ```
 ### 5.2 Ejecución del servidor Python:
 ```bash
@@ -89,10 +89,10 @@ python3 ServidorCamara.py
 ```
 ### 5.4 Ejecución mediante script Bash:
 ```bash
-chmod +x ejecutar.sh
+chmod +x cliente.sh
 ```
 ```bash
-./ejecutar.sh
+./cliente.sh
 ```
 ---
 ## 6. Funcionamiento del programa en C++ :
@@ -176,7 +176,7 @@ Asegurarse de que la IP en `cliente.cpp` y en `ServidorCamara.py` coinciden.
 ### Error de compilacion:
 Asegurarse de tener instalado `g++` y compilar con ambos archivos:
 ```bash
-g++ main.cpp cliente.cpp -o cliente
+g++ cliente.cpp -o cliente
 ```
 ---
 ## 11. Autores :
