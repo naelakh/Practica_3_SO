@@ -27,11 +27,9 @@ El programa utiliza conceptos fundamentales como:
 ## 2. Estructura del repositorio :
 ```bash
 Practica_3_SO/
-├── main.cpp
 ├── cliente.cpp
-├── cliente.h
 ├── ServidorCamara.py
-├── ejecutar.sh
+├── cliente.sh
 ├── datos.txt
 └── README.md
 ```
